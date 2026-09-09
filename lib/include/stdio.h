@@ -3,6 +3,7 @@
 
 #include <stddef.h>
 #include <stdarg.h>
+#include "unistd.h"
 
 #define EOF (-1)
 
@@ -42,6 +43,7 @@ int rename(const char *oldpath, const char *newpath);
 
 FILE *fopen(const char *pathname, const char *mode);
 FILE *fdopen(int fd, const char *mode);
+FILE *open_memstream(char **ptr, size_t *sizeloc);
 int fclose(FILE *stream);
 size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
 size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
@@ -56,5 +58,15 @@ int fgetc(FILE *stream);
 int ungetc(int c, FILE *stream);
 int remove(const char *pathname);
 void perror(const char *s);
+int fileno(FILE *stream);
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+FILE *tmpfile(void);
+int scanf(const char *format, ...);
+int fscanf(FILE *stream, const char *format, ...);
+int sscanf(const char *str, const char *format, ...);
+int vfscanf(FILE *stream, const char *format, va_list ap);
+int vsscanf(const char *str, const char *format, va_list ap);
+FILE *popen(const char *command, const char *type);
+int pclose(FILE *stream);
 
 #endif
